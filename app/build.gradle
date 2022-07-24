@@ -1,0 +1,67 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdk App.compile_sdk
+
+    defaultConfig {
+        applicationId App.application_id
+        minSdk App.min_sdk
+        targetSdk App.target_sdk
+        versionCode App.version_code
+        versionName App.version_name
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = App.jvm_target
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion Versions.compose_compiler
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+    implementation project(Modules.commom)
+
+    implementation Dependencies.androidx_core
+    implementation Dependencies.androidx_compose_ui
+    implementation Dependencies.androidx_compose_material
+    implementation Dependencies.androidx_compose_tooling_preview
+    implementation Dependencies.androidx_lifecycle
+    implementation Dependencies.androidx_compose_activity
+    implementation Dependencies.koin_android
+    implementation Dependencies.koin_compose
+
+    testImplementation Dependencies.koin_test
+    testImplementation Dependencies.junit
+    androidTestImplementation Dependencies.androix_junit
+    androidTestImplementation Dependencies.androidx_compose_ui_test
+
+    debugImplementation Dependencies.androidx_compose_ui_tooling
+    debugImplementation Dependencies.androidx_ui_test
+}
