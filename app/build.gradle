@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    compileSdk App.compile_sdk
+    compileSdk App.CompileSdk
 
     defaultConfig {
-        applicationId App.application_id
-        minSdk App.min_sdk
-        targetSdk App.target_sdk
-        versionCode App.version_code
-        versionName App.version_name
+        applicationId App.ApplicationId
+        minSdk App.MinSdk
+        targetSdk App.TargetSdk
+        versionCode App.VersionCode
+        versionName App.VersionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -30,13 +30,13 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = App.jvm_target
+        jvmTarget = Dependencies.JvmTarget
     }
     buildFeatures {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion Versions.compose_compiler
+        kotlinCompilerExtensionVersion Dependencies.ComposeCompiler
     }
     packagingOptions {
         resources {
@@ -46,22 +46,25 @@ android {
 }
 
 dependencies {
-    implementation project(Modules.commom)
+    implementation project(Modules.Commom)
 
-    implementation Dependencies.androidx_core
-    implementation Dependencies.androidx_compose_ui
-    implementation Dependencies.androidx_compose_material
-    implementation Dependencies.androidx_compose_tooling_preview
-    implementation Dependencies.androidx_lifecycle
-    implementation Dependencies.androidx_compose_activity
-    implementation Dependencies.koin_android
-    implementation Dependencies.koin_compose
+    implementation Dependencies.AndroidX_Core
+    implementation Dependencies.Compose_Ui
+    implementation Dependencies.Compose_Material
+    implementation Dependencies.Compose_UiToolingPreview
+    implementation Dependencies.AndroidX_LifecycleRuntime
+    implementation Dependencies.AndroidX_ActivityCompose
+    implementation Dependencies.AndroidX_Core
+    implementation Dependencies.Koin_Compose
+    implementation Dependencies.Koin
+    implementation Dependencies.Courotines
+    implementation Dependencies.AndroidX_NavigationCompose
 
-    testImplementation Dependencies.koin_test
-    testImplementation Dependencies.junit
-    androidTestImplementation Dependencies.androix_junit
-    androidTestImplementation Dependencies.androidx_compose_ui_test
+    testImplementation Dependencies.Koin_Test
+    testImplementation Dependencies.Junit
+    androidTestImplementation Dependencies.AndroidX_JunitExt
+    androidTestImplementation Dependencies.Compose_UiTestJunit4
 
-    debugImplementation Dependencies.androidx_compose_ui_tooling
-    debugImplementation Dependencies.androidx_ui_test
+    debugImplementation Dependencies.Compose_UiTooling
+    debugImplementation Dependencies.Compose_UiTestManifest
 }

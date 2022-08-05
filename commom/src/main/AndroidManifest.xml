@@ -2,4 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.br.commom">
 
+    <application>
+        <activity
+            android:name=".ProgressBarActivity"
+            android:exported="false"
+            android:label="@string/title_activity_progress_bar"
+            android:theme="@style/Theme.ComposeTest" />
+    </application>
+
 </manifest>

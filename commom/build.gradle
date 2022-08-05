@@ -4,22 +4,49 @@ plugins {
 }
 
 android {
-    compileSdk App.compile_sdk
+    compileSdk App.CompileSdk
+
+    defaultConfig {
+        minSdk App.MinSdk
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
 
     buildFeatures {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion Versions.compose_compiler
+        kotlinCompilerExtensionVersion Dependencies.ComposeCompiler
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = Dependencies.JvmTarget
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
     }
 }
 
 dependencies {
-    implementation Dependencies.androidx_core
-    implementation Dependencies.koin_android
-    implementation Dependencies.androidx_compose_material
-    implementation Dependencies.androidx_compose_activity
+    implementation Dependencies.AndroidX_Core
+    implementation Dependencies.Koin_Compose
+    implementation Dependencies.Compose_Material
+    implementation Dependencies.AndroidX_ActivityCompose
+    implementation Dependencies.Compose_Ui
+    implementation Dependencies.Compose_UiToolingPreview
+    implementation Dependencies.AndroidX_LifecycleRuntime
 
-    testImplementation Dependencies.junit
-    androidTestImplementation Dependencies.androix_junit
+    testImplementation Dependencies.Koin_Test
+    testImplementation Dependencies.Junit
+    androidTestImplementation Dependencies.AndroidX_JunitExt
+    androidTestImplementation Dependencies.Compose_UiTestJunit4
+
+    debugImplementation Dependencies.Compose_UiTooling
+    debugImplementation Dependencies.Compose_UiTestManifest
 }

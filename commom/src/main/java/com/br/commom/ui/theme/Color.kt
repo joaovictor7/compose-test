@@ -18,14 +18,16 @@ val DarkColorsTheme = darkColors(
     primary = Purple200,
     primaryVariant = Purple700,
     secondary = Teal200,
-    background = Grey900
+    background = Grey900,
+    onBackground = Black
 )
 
 val LightColorsTheme = lightColors(
     primary = Purple500,
     primaryVariant = Purple700,
     secondary = Teal200,
-    background = Grey200
+    background = Grey200,
+    onBackground = Grey900
 
     /* Other default colors to override
     background = Color.White,
