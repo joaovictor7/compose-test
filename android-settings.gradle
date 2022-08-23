@@ -1,0 +1,62 @@
+android {
+    compileSdk App.CompileSdk
+
+    defaultConfig {
+        minSdk App.MinSdk
+        targetSdk App.TargetSdk
+        versionCode App.VersionCode
+        versionName App.VersionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = Dependencies.JvmTarget
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion Dependencies.ComposeCompiler
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+    implementation Dependencies.AndroidX_Core
+    implementation Dependencies.Compose_Ui
+    implementation Dependencies.Compose_Material
+    implementation Dependencies.Compose_UiToolingPreview
+    implementation Dependencies.AndroidX_LifecycleRuntime
+    implementation Dependencies.AndroidX_ActivityCompose
+    implementation Dependencies.AndroidX_Core
+    implementation Dependencies.Koin_Compose
+    implementation Dependencies.Koin
+    implementation Dependencies.Courotines
+    implementation Dependencies.AndroidX_NavigationCompose
+
+    testImplementation Dependencies.Koin_Test
+    testImplementation Dependencies.Junit
+    androidTestImplementation Dependencies.AndroidX_JunitExt
+    androidTestImplementation Dependencies.Compose_UiTestJunit4
+
+    debugImplementation Dependencies.Compose_UiTooling
+    debugImplementation Dependencies.Compose_UiTestManifest
+}

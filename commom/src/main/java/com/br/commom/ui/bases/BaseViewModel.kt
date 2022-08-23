@@ -1,5 +1,7 @@
 package com.br.commom.ui.bases
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,9 +9,9 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
 import java.lang.Exception
 
-open class BaseViewModel : ViewModel() {
+open class BaseViewModel: ViewModel() {
 
-    private val _loadingProgressBar = MutableLiveData<Boolean>()
+    val _loadingProgressBar = MutableLiveData<Boolean>()
     val loadingProgressBar: LiveData<Boolean> = _loadingProgressBar
 
     protected fun asyncTask(
@@ -39,7 +41,7 @@ open class BaseViewModel : ViewModel() {
     }
 
     private fun showLoading(show: Boolean) {
-        _loadingProgressBar.value = show
+        _loadingProgressBar.postValue(show)
     }
 
     private fun handleError(e: Exception) {

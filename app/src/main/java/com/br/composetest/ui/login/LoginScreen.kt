@@ -9,17 +9,6 @@ import com.br.commom.ui.bases.BaseActivity
 import com.br.composetest.ui.main.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class LoginScreen: BaseActivity() {
-
-    private val viewModel by viewModel<MainViewModel>()
-
-    override fun init() {
-        TODO("Not yet implemented")
-    }
-
-
-}
-
 private lateinit var viewModel1: LoginViewModel
 
 @Composable

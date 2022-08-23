@@ -1,6 +1,5 @@
 object App {
     const val CompileSdk = 32
-    const val ApplicationId = "com.br.composetest"
     const val MinSdk = 21
     const val TargetSdk = 32
     const val VersionCode = 1
