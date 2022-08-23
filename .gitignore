@@ -7,9 +7,10 @@
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
-/cacheable/
+/cacheable
 .DS_Store
 /build
+/buildSrc/build
 /captures
 .externalNativeBuild
 .cxx

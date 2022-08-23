@@ -7,14 +7,14 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.br.commom.ui.bases.BaseActivity
 import com.br.commom.ui.components.DefaultSurface
 import com.br.commom.ui.components.NormalText
+import com.br.commom.ui.navigation.DefaultNavigation
 import com.br.commom.ui.theme.ComposeTestTheme
-import com.br.composetest.ui.navhost.Navigation
+import com.br.composetest.domain.destinations.Home
+import com.br.composetest.domain.destinations.Profile
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity() {
@@ -29,14 +29,15 @@ class MainActivity : BaseActivity() {
     private fun view() {
         setView {
             navController = rememberNavController()
-            Navigation(navController = navController)
+            DefaultNavigation(
+                navController = navController,
+                startDestination = Home.route,
+                screens = arrayOf(Home, Profile)
+            )
         }
     }
 
     private fun observers() {
-        viewModel.loadingProgressBar.observe(this) {
-            showLoading(show = it)
-        }
     }
 
 }
@@ -44,7 +45,7 @@ class MainActivity : BaseActivity() {
 
 
 @Composable
-fun Main(navController: NavHostController, viewModel: MainViewModel) {
+fun Main(viewModel: MainViewModel) {
     Column {
         LazyColumn {
             items(2) {

@@ -24,7 +24,7 @@ object Dependencies {
     const val AndroidX_JunitExt = "androidx.test.ext:junit:1.1.3"
 
     // Compose
-    private const val ComposeVersion = "1.3.0-alpha02"
+    private const val ComposeVersion = "1.3.0-alpha03"
     const val Compose_Material = "androidx.compose.material:material:$ComposeVersion"
     const val Compose_UiToolingPreview = "androidx.compose.ui:ui-tooling-preview:$ComposeVersion"
     const val Compose_Ui = "androidx.compose.ui:ui:$ComposeVersion"

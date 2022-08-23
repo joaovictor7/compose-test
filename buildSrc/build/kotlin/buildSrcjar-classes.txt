@@ -1,1 +1,0 @@
-/Users/joao.matos/Projetos/Android/ComposeTest/buildSrc/build/classes/kotlin/main/App.class:/Users/joao.matos/Projetos/Android/ComposeTest/buildSrc/build/classes/kotlin/main/Dependencies.class:/Users/joao.matos/Projetos/Android/ComposeTest/buildSrc/build/classes/kotlin/main/Modules.class
