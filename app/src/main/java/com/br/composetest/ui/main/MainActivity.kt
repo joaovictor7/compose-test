@@ -7,7 +7,10 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.br.commom.domain.destinations.ProgressBar
 import com.br.commom.ui.bases.BaseActivity
 import com.br.commom.ui.components.DefaultSurface
 import com.br.commom.ui.components.NormalText
@@ -15,6 +18,7 @@ import com.br.commom.ui.navigation.DefaultNavigation
 import com.br.commom.ui.theme.ComposeTestTheme
 import com.br.composetest.domain.destinations.Home
 import com.br.composetest.domain.destinations.Profile
+import org.koin.androidx.compose.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity() {
@@ -38,6 +42,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun observers() {
+
     }
 
 }
@@ -45,14 +50,14 @@ class MainActivity : BaseActivity() {
 
 
 @Composable
-fun Main(viewModel: MainViewModel) {
+fun Main() {
     Column {
         LazyColumn {
             items(2) {
                 NormalText("Android")
             }
         }
-        Button(onClick = { viewModel.teste() }) {
+        Button(onClick = {  }) {
             Text(text = "teste")
         }
     }
@@ -70,42 +75,7 @@ fun Main(viewModel: MainViewModel) {
 fun DefaultPreview() {
     ComposeTestTheme {
         DefaultSurface {
-            Column {
-                NormalText("Android")
-                NormalText("Android")
-                NormalText("Android")
-                NormalText("Android")
-                NormalText("Android")
-                NormalText("Android")
-                NormalText("Android")
-                NormalText("Android")
-                NormalText("Android")
-                NormalText("Android")
-                NormalText("Android")
-                NormalText("Android")
-                NormalText("Android")
-                NormalText("Android")
-                NormalText("Android")
-                NormalText("Android")
-                NormalText("Android")
-                NormalText("Android43434343434434343")
-                NormalText("Android43434343434434343")
-                NormalText("Android43434343434434343")
-                NormalText("Android43434343434434343")
-                NormalText("Android43434343434434343")
-                NormalText("Android43434343434434343")
-                NormalText("Android43434343434434343")
-                NormalText("Android43434343434434343")
-                NormalText("Android43434343434434343")
-                NormalText("Android43434343434434343")
-                NormalText("Android43434343434434343")
-                NormalText("Android43434343434434343")
-                NormalText("Android43434343434434343")
-                NormalText("Android43434343434434343")
-                NormalText("Android43434343434434343")
-                NormalText("Android43434343434434343")
-                NormalText("Android")
-            }
+           Main()
         }
     }
 }

@@ -32,15 +32,6 @@ abstract class BaseActivity : ComponentActivity() {
         }
     }
 
-    protected fun showLoading(show: Boolean) {
-        if (show) {
-            navController.navigate("progressBar")
-        } else {
-            navController.popBackStack("progressBar", true)
-        }
-
-    }
-
     protected abstract fun init()
 
 }

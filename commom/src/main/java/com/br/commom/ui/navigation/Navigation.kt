@@ -1,6 +1,7 @@
 package com.br.commom.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -14,9 +15,9 @@ fun DefaultNavigation(
     vararg screens: ScreenDestination
 ) {
     NavHost(navController, startDestination) {
-        composable(route = ProgressBar.route) { ProgressBar.screen }
+        composable(route = ProgressBar.route, content = ProgressBar.screen)
         screens.forEach { screen ->
-            composable(route = screen.route) { screen.screen }
+            composable(route = screen.route, content = screen.screen)
         }
     }
 }
