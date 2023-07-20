@@ -11,11 +11,11 @@ val Teal200 = Color(0xFF03DAC5)
 val Grey200 = Color(0xFFEEEEEE)
 val Grey400 = Color(0xFFBDBDBD)
 val Grey900 = Color(0xFF212121)
-val White = Color(0xFF03DAC5)
+val White = Color(0xFFFFFFFF)
 val Black = Color(0xFF000000)
 
 val DarkColorsTheme = darkColors(
-    primary = Purple200,
+    primary = Purple500,
     primaryVariant = Purple700,
     secondary = Teal200,
     background = Grey900,
@@ -23,7 +23,7 @@ val DarkColorsTheme = darkColors(
 )
 
 val LightColorsTheme = lightColors(
-    primary = Purple500,
+    primary = Purple200,
     primaryVariant = Purple700,
     secondary = Teal200,
     background = Grey200,

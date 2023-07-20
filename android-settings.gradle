@@ -1,24 +1,16 @@
 apply plugin: 'org.jetbrains.kotlin.android'
+apply from: "$rootDir/dependencies.gradle"
 
 android {
-    compileSdk App.CompileSdk
+    compileSdk app.compile_sdk
 
     defaultConfig {
-        minSdk App.MinSdk
-        targetSdk App.TargetSdk
-        versionCode App.VersionCode
-        versionName App.VersionName
+        minSdk app.min_sdk
+        targetSdk app.target_sdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary true
-        }
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
@@ -26,13 +18,13 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = Dependencies.JvmTarget
+        jvmTarget = app.jvm_target
     }
     buildFeatures {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion Dependencies.ComposeCompiler
+        kotlinCompilerExtensionVersion versions.compose_compiler
     }
     packagingOptions {
         resources {
@@ -42,23 +34,29 @@ android {
 }
 
 dependencies {
-    implementation Dependencies.AndroidX_Core
-    implementation Dependencies.Compose_Ui
-    implementation Dependencies.Compose_Material
-    implementation Dependencies.Compose_UiToolingPreview
-    implementation Dependencies.AndroidX_LifecycleRuntime
-    implementation Dependencies.AndroidX_ActivityCompose
-    implementation Dependencies.AndroidX_Core
-    implementation Dependencies.Koin_Compose
-    implementation Dependencies.Koin
-    implementation Dependencies.Courotines
-    implementation Dependencies.AndroidX_NavigationCompose
+    implementation dependency.androidx_core
+    implementation dependency.compose_ui
+    implementation dependency.compose_material
+    implementation dependency.compose_tooling_preview
+    implementation dependency.compose_lifecycle_viewmodel
+    implementation dependency.compose_livedata
+    implementation dependency.androidx_lifecycle
+    implementation dependency.androidx_compose_activity
+    implementation dependency.androidx_lifecycle_compose
+    implementation dependency.koin_compose
+    implementation dependency.koin
+    implementation dependency.courotines
+    implementation dependency.androidx_navigation_compose
+    implementation dependency.gson
+    implementation dependency.compose_material_icons
+    implementation platform(dependency.google_firebase)
+    implementation dependency.google_firebase_analytics
 
-    testImplementation Dependencies.Koin_Test
-    testImplementation Dependencies.Junit
-    androidTestImplementation Dependencies.AndroidX_JunitExt
-    androidTestImplementation Dependencies.Compose_UiTestJunit4
+    testImplementation dependency.koin_test
+    testImplementation dependency.junit
+    androidTestImplementation dependency.androidx_junit
+    androidTestImplementation dependency.compose_ui_test_junit
 
-    debugImplementation Dependencies.Compose_UiTooling
-    debugImplementation Dependencies.Compose_UiTestManifest
+    debugImplementation dependency.compose_ui_tooling
+    debugImplementation dependency.compose_ui_test_manifest
 }

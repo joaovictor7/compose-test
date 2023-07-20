@@ -2,3 +2,7 @@ plugins {
     id 'com.android.library'
 }
 apply from: "$rootDir/android-settings.gradle"
+
+android {
+    namespace 'com.br.commom'
+}

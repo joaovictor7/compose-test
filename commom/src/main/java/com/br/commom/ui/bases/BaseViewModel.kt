@@ -2,37 +2,36 @@ package com.br.commom.ui.bases
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.*
-import java.lang.Exception
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.launch
 
-open class BaseViewModel: ViewModel() {
+abstract class BaseViewModel<Action> : ViewModel() {
+    abstract fun handleAction(action: Action)
 
-    protected fun asyncTask(
+    protected fun <T> asyncFlowTask(
         showLoading: Boolean = false,
-        onError: (e: Exception) -> Unit = ::handleError,
-        onAction: suspend () -> Unit
+        flowAction: Flow<T>,
+        successAction: (param: T) -> Unit,
+        errorAction: (e: Throwable) -> Unit = ::handleError
     ) {
-//        return flow<Unit> {
-//            onAction.invoke()
-//        }.onStart {
-//            showLoading(showLoading)
-//        }.onCompletion {
-//            showLoading(false)
-//        }.catch {
-//            onError.invoke(it)
-//        }
-
-        viewModelScope.launch {
-            try {
-                onAction.invoke()
-            } catch (e: Exception) {
-                onError.invoke(e)
+        viewModelScope.launch(Dispatchers.IO) {
+            flowAction.onStart {
+                //showLoading(showLoading)
+            }.onCompletion {
+                //showLoading(false)
+            }.catch {
+                errorAction.invoke(it)
+            }.collect {
+                successAction.invoke(it)
             }
         }
     }
 
-
-    private fun handleError(e: Exception) {
+    private fun handleError(e: Throwable) {
 
     }
 

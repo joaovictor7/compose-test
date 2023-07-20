@@ -1,16 +1,17 @@
 package com.br.composetest.ui.main
 
+import androidx.lifecycle.ViewModel
 import com.br.commom.ui.bases.BaseViewModel
 import kotlinx.coroutines.delay
 
-class MainViewModel : BaseViewModel() {
+class MainViewModel: ViewModel() {
 
-    fun teste() {
-        asyncTask(showLoading = true) {
-            teste1()
-        }
-        println("fora")
-    }
+//    fun teste() {
+//        asyncTask(showLoading = true) {
+//            teste1()
+//        }
+//        println("fora")
+//    }
 
     private suspend fun teste1() {
         for (i in 1..5) {

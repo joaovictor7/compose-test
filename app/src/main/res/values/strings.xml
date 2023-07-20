@@ -1,0 +1,7 @@
+<resources>
+
+    <!-- Login Screen -->
+    <string name="login_screen_title">Realize seu login</string>
+    <string name="login_screen_button_text">Entrar</string>
+
+</resources>

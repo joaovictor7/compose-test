@@ -1,8 +1,29 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
 apply from: "$rootDir/android-settings.gradle"
 
+android {
+    namespace app.application_id
+    defaultConfig {
+        applicationId = app.application_id
+    }
+    buildTypes {
+        debug {
+            versionNameSuffix  "-dev"
+            applicationIdSuffix  ".dev"
+            minifyEnabled false
+        }
+        release {
+            applicationIdSuffix  ".prod"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
 dependencies {
-    implementation project(Modules.Commom)
+    implementation project(module.commom)
+    implementation dependency.google_firebase_auth
 }
