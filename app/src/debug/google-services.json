@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "60517856563",
+    "project_id": "compose-teste---dev",
+    "storage_bucket": "compose-teste---dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60517856563:android:939f8d9f40b2e810983a46",
+        "android_client_info": {
+          "package_name": "com.br.composetest.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "60517856563-f3f7dg6qhj4fvtdqde61a2vj9bug0tv0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcGKgSArXZg4MLIzcqc-PA2b82KucHmVg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "60517856563-f3f7dg6qhj4fvtdqde61a2vj9bug0tv0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
