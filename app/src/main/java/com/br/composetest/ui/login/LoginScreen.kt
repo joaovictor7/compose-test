@@ -44,6 +44,13 @@ fun LoginScreen(navHostController: NavHostController) {
     LoginForm { email, password ->
         viewModel.handleAction(LoginScreenAction.Login(email, password))
     }
+
+    LaunchedEffect(true) {
+        when (state.navigation) {
+            LoginScreenNavigation.Home -> navigationTo(viewModel, navHostController, state)
+            else -> Unit
+        }
+    }
 }
 
 @Composable
@@ -83,13 +90,16 @@ private fun navigationTo(
     viewModel: LoginScreenViewModel,
     navHostController: NavHostController,
     state: LoginScreenState
-) = state.navigation?.also {
-    when (it) {
-        LoginScreenNavigation.Home -> navHostController.navigate(
-            Home.getRouteForNavigationFormatted(HomeScreenParam(loginSuccess = true))
-        )
-    }
-    viewModel.handleAction(LoginScreenAction.ResetState)
+) {
+    navHostController.navigate(
+        Home.setParam(HomeScreenParam(loginSuccess = true)).routePathNavigation
+    )
+//    when (it) {
+//        LoginScreenNavigation.Home -> navHostController.navigate(
+//            Home.setParam(HomeScreenParam(loginSuccess = true)).routePathNavigation
+//        )
+//    }
+//    viewModel.handleAction(LoginScreenAction.ResetState)
 }
 
 //region Preview

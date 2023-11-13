@@ -34,6 +34,7 @@ android {
 }
 
 dependencies {
+    implementation dependency.compose_bom
     implementation dependency.androidx_core
     implementation dependency.compose_ui
     implementation dependency.compose_material

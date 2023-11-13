@@ -26,7 +26,7 @@ class MainActivity : BaseActivity() {
             NavHost(navController, Login.route) {
                 screensList.forEach { screen ->
                     composable(
-                        route = screen.routeParamFormatted,
+                        route = screen.routePath,
                         arguments = screen.arguments
                     ) { screen.screen.invoke(navController, it) }
                 }
